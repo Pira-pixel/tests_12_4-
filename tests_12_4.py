@@ -1,10 +1,15 @@
 import unittest
 import logging
-from pythonProject.Lessons.Module12.tests_12_2.tests.runner import Runner
-
+from rt_with_exceptions import Runner
 
 # Настройка логирования
-
+logging.basicConfig(
+    level=logging.INFO,
+    filemode='w',  # Очищает файл при каждом запуске
+    filename='runner_tests.log',
+    format='%(asctime)s | %(levelname)s | %(message)s',
+    encoding='utf-8'
+)
 
 class RunnerTest(unittest.TestCase):
     is_frozen = False
@@ -40,13 +45,5 @@ class RunnerTest(unittest.TestCase):
             runner2.walk()
         self.assertNotEqual(runner1.distance, runner2.distance)
 
-
 if __name__ == '__main__':
     unittest.main()
-    logging.basicConfig(
-        level=logging.INFO,
-        filemode='w',
-        filename='runner_tests.log',
-        format='%(asctime)s | %(levelname)s | %(message)s',
-        encoding='utf-8'
-    )
